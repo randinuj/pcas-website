@@ -1,223 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PCAS</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Global Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PCAS Website</title>
+  
+  <!-- Google Fonts (Product Sans) -->
+  <link href="https://fonts.googleapis.com/css2?family=Product+Sans&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for Social Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Product Sans', sans-serif;
+    }
+    body {
+      background-color: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
 
-        /* Header Styles */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            background-color: #002855;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(10px);
-            z-index: 100;
-        }
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      background-color: #002855;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      animation: fadeIn 1s ease-out;
+    }
 
-        header img {
-            filter: brightness(0) invert(1);
-            max-height: 80px;
-        }
+    header img {
+      filter: brightness(0) invert(1);
+    }
 
-        /* Main Body */
-        .main-container {
-            margin-top: 140px; /* To avoid overlap with fixed header */
-            text-align: center;
-            padding: 5vw 2rem;
-        }
+    /* Main Body */
+    .main-body {
+      margin-top: 140px;
+      text-align: center;
+      padding: 40px;
+    }
 
-        .quote {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #6d6d6d;
-            margin-bottom: 1.5rem;
-        }
+    .quote {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #6d6d6d;
+      animation: fadeIn 2s ease-out;
+    }
 
-        .author {
-            font-style: italic;
-            font-size: 1.25rem;
-            color: #6d6d6d;
-            margin-bottom: 1rem;
-        }
+    .author {
+      font-size: 1.25rem;
+      color: #6d6d6d;
+      font-style: italic;
+      margin-top: 10px;
+      animation: fadeIn 3s ease-out;
+    }
 
-        .description {
-            font-size: 1.25rem;
-            color: #6d6d6d;
-            margin-bottom: 2rem;
-        }
+    .description {
+      font-size: 1.25rem;
+      color: #6d6d6d;
+      margin-top: 20px;
+      animation: fadeIn 4s ease-out;
+    }
 
-        .register-btn {
-            background-color: #002855;
-            color: white;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            border: none;
-        }
+    .register-btn {
+      background-color: #002855;
+      color: white;
+      font-size: 1.1rem;
+      padding: 12px 30px;
+      border-radius: 30px;
+      margin-top: 30px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      animation: fadeIn 5s ease-out;
+    }
 
-        .register-btn:hover {
-            background-color: #001f3f;
-            transform: scale(1.05);
-        }
+    .register-btn:hover {
+      background-color: #001f3f;
+      transform: scale(1.05);
+    }
 
-        .register-btn:focus {
-            outline: none;
-        }
+    .register-btn:focus {
+      outline: none;
+    }
 
-        /* Form Container */
-        .form-container {
-            display: none;
-            margin-top: 3rem;
-        }
+    /* Form Container */
+    .form-container {
+      display: none;
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      animation: slideUp 1s ease-out;
+    }
 
-        iframe {
-            width: 100%;
-            height: 600px;
-            border: none;
-            border-radius: 10px;
-        }
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 10px;
+    }
 
-        /* Footer Styles */
-        footer {
-            background-color: #002855;
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
+    /* Footer */
+    footer {
+      background-color: #002855;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: relative;
+      margin-top: 40px;
+    }
 
-        .social-links i {
-            font-size: 2rem;
-            margin: 0 15px;
-            color: white;
-            transition: color 0.3s ease;
-        }
+    footer .footer-text {
+      font-size: 0.8rem;
+      animation: fadeIn 6s ease-out;
+    }
 
-        .social-links i:hover {
-            color: #ffd700;
-        }
+    footer .social-links a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
 
-        .contact-info {
-            margin-top: 1.5rem;
-        }
+    footer .social-links a:hover {
+      color: #ffd700;
+    }
 
-        .contact-info h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
+    footer .contact-info h3 {
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
 
-        .contact-info p {
-            font-size: 1.1rem;
-        }
+    footer .contact-info p {
+      font-size: 1.1rem;
+    }
 
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .quote {
-                font-size: 1.2rem;
-            }
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      .quote, .author, .description {
+        font-size: 1rem;
+      }
 
-            .author, .description {
-                font-size: 1.1rem;
-            }
+      .register-btn {
+        font-size: 1rem;
+        padding: 10px 25px;
+      }
 
-            .register-btn {
-                padding: 10px 25px;
-                font-size: 1rem;
-            }
+      iframe {
+        height: 500px;
+      }
 
-            iframe {
-                height: 500px;
-            }
-        }
+      footer .footer-text {
+        font-size: 0.7rem;
+      }
+    }
 
-        @media (max-width: 480px) {
-            .quote {
-                font-size: 1rem;
-            }
+    @media (max-width: 480px) {
+      header img {
+        width: 50%;
+      }
 
-            .author, .description {
-                font-size: 1rem;
-            }
+      .quote, .author, .description {
+        font-size: 0.9rem;
+      }
 
-            .register-btn {
-                padding: 8px 20px;
-                font-size: 0.9rem;
-            }
+      .register-btn {
+        font-size: 0.9rem;
+        padding: 8px 20px;
+      }
+    }
 
-            iframe {
-                height: 400px;
-            }
-        }
-    </style>
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <img src="./about me ..png" alt="PCAS Logo">
-    </header>
+  <!-- Header -->
+  <header>
+    <img src="./logo.png" alt="PCAS Logo">
+  </header>
 
-    <!-- Main Body -->
-    <div class="main-container">
-        <div class="quote">
-            “Somewhere, something incredible is waiting to be known.”
-        </div>
-        <div class="author">
-            – Carl Sagan
-        </div>
-        <div class="description">
-            Membership registration has started. Join us to seek the unknown mysteries of the universe!
-        </div>
-        <button class="register-btn" id="register-btn">Register Now</button>
-        
-        <!-- Form Container (Initially Hidden) -->
-        <div class="form-container" id="form-container">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe53xlUgdvRp_TK5TYuyvY7pAKWAsF6lWJZfR2sp3ZbMNnYSQ/viewform" title="PCAS Registration Form"></iframe>
-        </div>
+  <!-- Main Body -->
+  <div class="main-body">
+    <div class="quote">“Somewhere, something incredible is waiting to be known.”</div>
+    <div class="author">– Carl Sagan</div>
+    <div class="description">Membership registration has started. Join us to seek the unknown mysteries of the universe!</div>
+    <button class="register-btn" onclick="showForm()">Register Now</button>
+
+    <!-- Form Container -->
+    <div class="form-container" id="form-container">
+      <iframe src="https://forms.gle/YOUR_GOOGLE_FORM_LINK" frameborder="0"></iframe>
     </div>
+  </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>Developed by PCICTS | Since 2017</p>
-        <div class="social-links">
-            <a href="https://wa.me/yournumber" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://facebook.com/yourpage" target="_blank"><i class="fab fa-facebook"></i></a>
-        </div>
-        <div class="contact-info">
-            <h3>Contact Us</h3>
-            <p>President: +94 767708978</p>
-            <p>Secretary: +94 123456789</p>
-        </div>
-    </footer>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-text">
+      Developed by PCICTS | Since 2017
+    </div>
+    <div class="social-links">
+      <a href="https://wa.me/your-phone-number" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="https://www.facebook.com/your-page" target="_blank">
+        <i class="fab fa-facebook"></i>
+      </a>
+    </div>
+    <div class="contact-info">
+      <h3>Contact Us</h3>
+      <p>President: +94 767708978</p>
+      <p>Secretary: +94 767708979</p>
+    </div>
+  </footer>
 
-    <!-- JavaScript to Toggle Form -->
-    <script>
-        document.getElementById('register-btn').addEventListener('click', function() {
-            document.querySelector('.quote').style.display = 'none';
-            document.querySelector('.author').style.display = 'none';
-            document.querySelector('.description').style.display = 'none';
-            document.querySelector('.form-container').style.display = 'block';
-        });
-    </script>
-
-    <!-- Font Awesome for Social Media Icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
+  <!-- JavaScript -->
+  <script>
+    function showForm() {
+      document.querySelector('.quote').style.display = 'none';
+      document.querySelector('.author').style.display = 'none';
+      document.querySelector('.description').style.display = 'none';
+      document.querySelector('.register-btn').style.display = 'none';
+      document.getElementById('form-container').style.display = 'block';
+    }
+  </script>
+  
 </body>
-  </html>
+</html>
