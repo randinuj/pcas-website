@@ -179,8 +179,8 @@
         /* Responsive Photo Frame */
         .photo-frame {
             width: 100%; /* Full width */
-            height: calc(100vh - 120px - 80px - 140px); /* Height adjusts to fill space between reg button and footer */
-            margin: 10px auto; /* Centered with margin */
+            height: 50vh; /* Half the viewport height */
+            margin: 30px auto; /* 30px margin between button and image */
             overflow: hidden;
             position: relative;
         }
@@ -190,7 +190,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover; /* Cover the area, adjusting aspect ratio */
-            transition: transform 1s ease-out; /* Slow down the transition */
+            transition: transform 1s ease-out; /* Slower transition */
         }
 
         /* Scroll-based Reveal Effect */
@@ -202,7 +202,7 @@
             height: 100%;
             background-color: white;
             z-index: 1;
-            transition: top 1s ease-out;
+            transition: top 1.5s ease-out; /* Slower reveal */
         }
 
         /* Ensure it's responsive */
@@ -234,6 +234,7 @@
             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdXIHYjN7jCrov0Hrjo5vVDmnGBAwsylflwi8cCq57mi3qToA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
     </div>
+
     <!-- Photo Frame with Scroll Effect -->
     <div class="photo-frame">
         <div class="reveal-photo" id="photoReveal"></div>
@@ -275,4 +276,4 @@
         });
     </script>
 </body>
-                </html>
+    </html>
