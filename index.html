@@ -47,24 +47,48 @@
 
     /* Main body */
     .main {
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding-top: 150px; /* Offset for sticky header */
-      background: url('https://source.unsplash.com/1920x1080/?universe,space') no-repeat center center/cover;
-      background-size: cover;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  padding-left: 10px;  /* Add a little padding for smaller screens if needed */
+  background: url('https://source.unsplash.com/1920x1080/?universe,space') no-repeat center center/cover;
+  background-size: cover;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    padding-left: 20px;  /* Adjust padding for smaller screens */
+    padding-top: 40px;   /* Adjust top padding for smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main {
+    padding-left: 15px;  /* Adjust padding for mobile screens */
+    padding-top: 30px;   /* Adjust padding for mobile screens */
+  }
+
+  .main h1 {
+    font-size: 1.5rem;   /* Reduce font size for smaller screens */
+  }
+
+  .main button {
+    padding: 10px 20px;  /* Adjust button size for smaller screens */
+    font-size: 0.9rem;    /* Reduce font size of button */
+  }
+    .main button:hover {
+      background-color: #001f3f;
+      transform: scale(1.1);
     }
 
-    .main h1 {
-      font-size: 2rem;
-      color: #6d6d6d;
-      margin-bottom: 15px;
-      font-weight: 400; /* Less bold */
+    .main button:focus {
+      outline: none;
     }
-
     .main .quote {
       font-size: 1.5rem;
       font-weight: bold; /* Bold quote */
@@ -83,29 +107,7 @@
       font-size: 1.25rem;
       color: #6d6d6d;
       margin-bottom: 30px;
-    }
-
-    .main button {
-      font-family:'Product Sans', sans-serif;
-      background-color: #002855; /* Matches header/footer color */
-      border: none;
-      color: white;
-      padding: 15px 35px;
-      font-size: 1rem;
-      border-radius: 30px; /* More round-edged */
-      cursor: pointer;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .main button:hover {
-      background-color: #001f3f;
-      transform: scale(1.1);
-    }
-
-    .main button:focus {
-      outline: none;
-    }
+      }
 
     /* Hidden form */
     .form-container {
