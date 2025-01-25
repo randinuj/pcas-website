@@ -1,226 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PCAS Registration</title>
-    <link href="https://fonts.googleapis.com/css2?family=Product+Sans&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Product Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: white;
-            color: #333;
-            overflow-x: hidden;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PCAS Registration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Product+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Product Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: #333;
+      overflow-x: hidden;
+    }
 
-        /* Header Styles */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            background-color: #002855;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-        }
+    /* Header Styles */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      background-color: #002855;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
 
-        header img {
-            max-height: 100%;
-            filter: brightness(0) invert(1);
-        }
+    header img {
+      max-height: 100%;
+      filter: brightness(0) invert(1);
+    }
 
-        /* Main Content */
-        .main-content {
-            padding-top: 140px;
-            text-align: center;
-            margin: 20px;
-            min-height: 80vh;
-        }
+    .main-content {
+      padding-top: 140px;
+      text-align: center;
+      margin: 20px;
+    }
 
-        .content-group {
-            opacity: 0;
-            animation: fadeIn 0.7s forwards 0.2s;
-        }
+    .btn-register {
+      margin-top: 30px;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      background-color: #002855;
+      color: white;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
 
-        .quote {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #6d6d6d;
-        }
+    .btn-register:hover {
+      background-color: #001f3f;
+      transform: scale(1.05);
+    }
 
-        .author {
-            font-size: 1.25rem;
-            font-style: italic;
-            color: #6d6d6d;
-            margin-top: 10px;
-        }
+    .btn-register:focus {
+      outline: none;
+    }
 
-        .description {
-            font-size: 1.25rem;
-            color: #6d6d6d;
-            margin-top: 20px;
-        }
+    .form-container {
+      display: none;
+      margin-top: 20px;
+      text-align: center;
+    }
 
-        .btn-register {
-            font-family: 'Product Sans', sans-serif;
-            margin-top: 30px;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            background-color: #002855;
-            color: white;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
+    iframe {
+      width: 100%;
+      height: 520px;
+      border: none;
+      border-radius: 10px;
+    }
 
-        .btn-register:hover {
-            background-color: #001f3f;
-            transform: scale(1.05);
-        }
+    .photo-frame {
+      position: relative;
+      overflow: hidden;
+      margin: 30px auto;
+      width: 100%; /* Full width */
+      height: 50vh; /* Half the viewport height */
+    }
 
-        .btn-register:focus {
-            outline: none;
-        }
+    .photo-frame img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-        /* Form Container */
-        .form-container {
-            display: none;
-            margin-top: 20px;
-            text-align: center;
-        }
+    footer {
+      background-color: #002855;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
 
-        iframe {
-            width: 100%;
-            height: 520px;
-            border: none;
-            border-radius: 10px;
-        }
-
-        /* Photo Frame */
-        .photo-frame {
-            width: 100%;
-            height: 50vh;
-            margin: 30px auto;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Footer Styles */
-        footer {
-            background-color: #002855;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            position: relative;
-            margin-top: 80px;
-        }
-
-        .footer-text {
-            font-size: 1rem;
-        }
-
-        .social-links, .contact-info {
-            margin-top: 10px;
-            font-size: 1.1rem;
-        }
-
-        .social-links i, .contact-info a {
-            margin: 0 15px;
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .social-links i:hover, .contact-info a:hover {
-            color: #ffd700;
-        }
-
-        .contact-info a {
-            display: block;
-            margin-top: 5px;
-        }
-
-        /* Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-    </style>
+    @media (max-width: 768px) {
+      .photo-frame {
+        height: 40vh;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <img src="about me ..png" alt="PCAS Logo">
-    </header>
 
-    <!-- Main Content -->
-    <div class="main-content">
-        <div class="content-group">
-            <div class="quote">"Somewhere, something incredible is waiting to be known."</div>
-            <div class="author">– Carl Sagan</div>
-            <div class="description">Membership registration has started. Join us to seek the unknown mysteries of the universe!</div>
-            <button class="btn-register" onclick="showForm()">Register Now</button>
-        </div>
+  <!-- Header -->
+  <header>
+    <img src="about me ..png" alt="PCAS Logo">
+  </header>
 
-        <!-- Form Container -->
-        <div class="form-container" id="formContainer">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdXIHYjN7jCrov0Hrjo5vVDmnGBAwsylflwi8cCq57mi3qToA/viewform?embedded=true"></iframe>
-        </div>
+  <!-- Main Content -->
+  <div class="main-content">
+    <div>
+      <div>"Somewhere, something incredible is waiting to be known."</div>
+      <div>– Carl Sagan</div>
+      <div>Membership registration has started. Join us to seek the unknown mysteries of the universe!</div>
+      <button class="btn-register" onclick="showForm()">Register Now</button>
     </div>
 
-    <!-- Photo Frame with GSAP Animation -->
-    <div class="photo-frame">
-        <img src="./IMG-20241104-WA0148.jpg" alt="Astronomical Society">
+    <!-- Form Container -->
+    <div class="form-container" id="formContainer">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdXIHYjN7jCrov0Hrjo5vVDmnGBAwsylflwi8cCq57mi3qToA/viewform?embedded=true" frameborder="0">Loading…</iframe>
     </div>
+  </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-text">© President's College Astronomical Society</div>
-        <div class="social-links">
-            <a href="https://wa.me/yourphonenumber" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://facebook.com/yourpage" target="_blank"><i class="fab fa-facebook"></i></a>
-        </div>
-        <div class="contact-info">
-            <a href="tel:+94767708978">President: +94 767 708 978</a>
-        </div>
-    </footer>
+  <!-- Photo Frame with Animation -->
+  <div class="photo-frame">
+    <img src="./IMG-20241104-WA0148.jpg" alt="Astronomical Society">
+  </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
+  <!-- Footer -->
+  <footer>
+    <div>© President's College Astronomical Society</div>
+  </footer>
 
-        gsap.to(".photo-frame img", {
-            yPercent: -20,
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".photo-frame",
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true
-            }
-        });
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
 
-        function showForm() {
-            document.querySelector('.content-group').style.display = 'none';
-            document.getElementById('formContainer').style.display = 'block';
-        }
-    </script>
+    // Apply GSAP Animation to the Photo Frame Image
+    let photoImage = document.querySelector(".photo-frame img");
+
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: ".photo-frame",
+        scrub: true,
+        pin: false,
+      },
+    })
+    .from(photoImage, {
+      yPercent: -30,
+      ease: "none",
+    })
+    .to(photoImage, {
+      yPercent: 30,
+      ease: "none",
+    });
+
+    function showForm() {
+      document.querySelector('.main-content > div').style.display = 'none';
+      document.getElementById('formContainer').style.display = 'block';
+    }
+  </script>
 </body>
-    </html>
+</html>
