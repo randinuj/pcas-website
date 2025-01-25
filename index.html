@@ -68,6 +68,7 @@
         }
 
         .btn-register {
+            font-family:'Product Sans', sans serif;
             margin-top: 30px;
             padding: 12px 30px;
             font-size: 1.1rem;
@@ -173,6 +174,42 @@
                 font-size: 1rem;
             }
         }
+        /* Responsive Photo Frame */
+.photo-frame {
+    width: 100%; /* Full width */
+    height: 50vh; /* Half the viewport height */
+    margin: 50px auto; /* Centered with margin */
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+}
+
+/* Ensure the image scales according to container size */
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area, adjusting aspect ratio */
+    transition: transform 0.3s ease-out;
+}
+
+/* Scroll-based Reveal Effect */
+.reveal-photo {
+    position: absolute;
+    top: 100%; /* Starts below the image */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 1;
+    transition: top 1s ease-out;
+}
+
+/* Ensure it's responsive */
+@media (max-width: 768px) {
+    .photo-frame {
+        height: 40vh; /* Smaller height on mobile */
+    }
+    }
     </style>
 </head>
 <body>
@@ -196,6 +233,11 @@
             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdXIHYjN7jCrov0Hrjo5vVDmnGBAwsylflwi8cCq57mi3qToA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
     </div>
+    <!-- Photo Frame with Scroll Effect -->
+<div class="photo-frame">
+    <div class="reveal-photo" id="photoReveal"></div>
+    <img src="https://via.placeholder.com/800x400" alt="Astronomical Image">
+</div>
 
     <!-- Footer -->
     <footer>
@@ -218,6 +260,17 @@
             // Display the form
             document.getElementById('formContainer').style.display = 'block';
         }
+        // Scroll effect for the photo reveal (responsive)
+window.addEventListener('scroll', function () {
+    const revealPhoto = document.getElementById('photoReveal');
+    const photoFrame = document.querySelector('.photo-frame');
+    const scrollPosition = window.scrollY;
+    const frameHeight = photoFrame.offsetHeight;
+
+    // Calculate the reveal percentage based on scroll position
+    const revealPosition = Math.min(scrollPosition / frameHeight, 1) * 100;
+    revealPhoto.style.top = `-${revealPosition}%`;
+});
     </script>
 </body>
     </html>
