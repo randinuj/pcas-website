@@ -40,7 +40,7 @@
             padding-top: 140px;
             text-align: center;
             margin: 20px;
-            min-height: 80vh; /* Ensures there's enough content to scroll */
+            min-height: 80vh;
         }
 
         .quote {
@@ -109,11 +109,11 @@
             text-align: center;
             padding: 20px 0;
             position: relative;
-            margin-top: 80px; /* Adds space above the footer */
+            margin-top: 80px;
         }
 
         .footer-text {
-            font-size: 0.85rem;
+            font-size: 1rem;
         }
 
         .social-links, .contact-info {
@@ -198,7 +198,6 @@
             <a href="https://facebook.com/yourpage" target="_blank"><i class="fab fa-facebook"></i></a>
         </div>
         <div class="contact-info">
-            <span>Contact Us: </span>
             <a href="tel:+94767708978">President: +94 767 708 978</a>
             <a href="tel:+94777788888">Secretary: +94 777 888 888</a>
         </div>
@@ -207,11 +206,14 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script>
         function showForm() {
+            // Hide main content once the button is clicked
             document.querySelector('.quote').style.display = 'none';
             document.querySelector('.author').style.display = 'none';
             document.querySelector('.description').style.display = 'none';
+            document.querySelector('.btn-register').style.display = 'none';
+            // Display the form
             document.getElementById('formContainer').style.display = 'block';
         }
     </script>
 </body>
-          </html>
+                </html>
