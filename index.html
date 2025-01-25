@@ -22,7 +22,7 @@
     body {
       font-family: 'Product Sans', sans-serif;
       color: #6d6d6d;
-      background-color: #fff; /* Decent navy blue theme */
+      background-color: #fff; /* Background color */
       overflow-x: hidden;
     }
 
@@ -31,7 +31,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      height: 100px;
+      height: 120px;
       background-color: #002855; /* Decent navy blue color */
       display: flex;
       justify-content: center;
@@ -41,8 +41,8 @@
     }
 
     header img {
-      height: 100px;
-      filter: brightness(0) invert(1); /* Makes logo pure white */
+      height: 120px; /* Larger logo */
+      filter: brightness(0) invert(1); /* Makes the logo pure white */
     }
 
     /* Main body */
@@ -53,36 +53,54 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding-top: 120px; /* Offset for sticky header */
+      padding-top: 150px; /* Offset for sticky header */
       background: url('https://source.unsplash.com/1920x1080/?universe,space') no-repeat center center/cover;
-    /* Darken background */
+      background-size: cover;
     }
 
     .main h1 {
-      font-family: 'Bebas Neue', sans-serif; /* Use Bebas Neue font */
       font-size: 2rem;
-      text-transform: uppercase;
+      color: #6d6d6d;
+      margin-bottom: 15px;
+      font-weight: 400; /* Less bold */
+    }
+
+    .main .quote {
+      font-size: 1.5rem;
+      font-weight: bold; /* Bold quote */
+      color: #6d6d6d;
+      margin-bottom: 15px;
+    }
+
+    .main .author {
+      font-size: 1.25rem;
+      font-style: italic; /* Italicized author */
+      color: #6d6d6d;
       margin-bottom: 20px;
-      color: #6d6d6d; /* Dark gray for contrast */
-      font-weight: 400; /* Makes the font less bold */
+    }
+
+    .main .description {
+      font-size: 1.25rem;
+      color: #6d6d6d;
+      margin-bottom: 30px;
     }
 
     .main button {
+      font-family:'Product Sans', sans-serif;
       background-color: #002855; /* Matches header/footer color */
       border: none;
       color: white;
-      padding: 12px 25px;
+      padding: 15px 35px;
       font-size: 1rem;
-      border-radius: 5px;
+      border-radius: 30px; /* More round-edged */
       cursor: pointer;
       transition: transform 0.3s ease, background-color 0.3s ease;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
     }
 
     .main button:hover {
-      background-color: #001f3f; /* Slightly darker navy */
-      color: #fff;
-      transform: scale(1.05);
+      background-color: #001f3f;
+      transform: scale(1.1);
     }
 
     .main button:focus {
@@ -109,16 +127,31 @@
       background-color: #002855; /* Matches header color */
       padding: 20px;
       text-align: center;
-      margin-top: auto;
     }
 
     footer p {
       font-size: 0.9rem;
       color: white;
+      margin-bottom: 10px;
+    }
+
+    footer .social-links {
+      margin-top: 10px;
+    }
+
+    footer .social-links a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    footer .contact {
+      font-size: 1rem;
+      color: white;
+      margin-top: 15px;
     }
   </style>
-  <!-- Add Bebas Neue font from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -129,7 +162,11 @@
 
   <!-- Main Body -->
   <div class="main">
-    <h1>“Seek the Unknown”</h1>
+    <div class="quote">“Somewhere, something incredible is waiting to be known.”</div>
+    <div class="author">– Carl Sagan</div>
+    <div class="description">
+      Membership registration for the President's College Astronomical Society has started. Join us to seek unknown mysteries of the universe!
+    </div>
     <button id="register-btn">Register Now</button>
     <div class="form-container" id="form-container">
       <iframe 
@@ -143,15 +180,29 @@
 
   <!-- Footer -->
   <footer>
-    <p>Developed by PCICTS</p><br>
+    <p>Developed by PCICTS</p>
     <p>Since 2017</p>
+    <div class="social-links">
+      <a href="https://wa.me/+94XXXXXXXXX" target="_blank">WhatsApp</a>
+      <a href="https://facebook.com/PCAS" target="_blank">Facebook</a>
+    </div>
+    <div class="contact">
+      <p>+94XXXXXXXXX - John Doe (President)</p>
+      <p>+94XXXXXXXXX - Jane Doe (Secretary)</p>
+    </div>
   </footer>
 
   <script>
     // Button click event to show the form
     document.getElementById('register-btn').addEventListener('click', function() {
-      this.style.display = 'none'; // Hide the button
-      document.getElementById('form-container').style.display = 'block'; // Show the form
+      // Hide quote, author, and description
+      document.querySelector('.quote').style.display = 'none';
+      document.querySelector('.author').style.display = 'none';
+      document.querySelector('.description').style.display = 'none';
+      
+      // Show the form and hide the button
+      this.style.display = 'none';
+      document.getElementById('form-container').style.display = 'block';
     });
   </script>
 
