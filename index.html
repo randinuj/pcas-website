@@ -189,7 +189,7 @@
         .photo-frame img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Cover the area, adjusting aspect ratio */
+            object-fit: cover;
             transition: transform 1s ease-out; /* Slower transition */
         }
 
@@ -255,7 +255,32 @@
     </footer>
 
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
+
     <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray(".photo-frame").forEach(function(container) {
+            let image = container.querySelector("img");
+
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: container,
+                    scrub: true,
+                    pin: false,
+                },
+            });
+
+            tl.from(image, {
+                yPercent: -30,
+                ease: "none",
+            }).to(image, {
+                yPercent: 30,
+                ease: "none",
+            });
+        });
+
         function showForm() {
             // Hide main content once the button is clicked
             document.querySelector('.content-group').style.display = 'none';
@@ -263,17 +288,6 @@
             document.getElementById('formContainer').style.display = 'block';
         }
 
-        // Scroll effect for the photo reveal (responsive)
-        window.addEventListener('scroll', function () {
-            const revealPhoto = document.getElementById('photoReveal');
-            const photoFrame = document.querySelector('.photo-frame');
-            const scrollPosition = window.scrollY;
-            const frameHeight = photoFrame.offsetHeight;
-
-            // Calculate the reveal percentage based on scroll position
-            const revealPosition = Math.min(scrollPosition / frameHeight, 1) * 100;
-            revealPhoto.style.top = `-${revealPosition}%`;
-        });
     </script>
 </body>
-    </html>
+        </html>
