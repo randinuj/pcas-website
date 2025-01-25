@@ -14,10 +14,9 @@
 
     @font-face{
       font-family: 'Product Sans';
-      src: url('./Product Sans Regular.ttf') format('truetype');
+      src:url('./Product Sans Regular.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
-      
     }
 
     body {
@@ -55,11 +54,13 @@
       align-items: center;
       padding-top: 100px; /* Offset for sticky header */
       background: url('https://source.unsplash.com/1920x1080/?universe,space') no-repeat center center/cover;
-     /* filter: brightness(0.4); /* Darken background */
+      filter: brightness(0.4); /* Darken background */
     }
 
     .main h1 {
-      font-size: 2.5rem;
+      font-family: 'Bebas Neue', sans-serif; /* Use Bebas Neue font */
+      font-size: 3.5rem;
+      text-transform: uppercase;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
       margin-bottom: 20px;
     }
@@ -112,6 +113,8 @@
       font-size: 0.9rem;
     }
   </style>
+  <!-- Add Bebas Neue font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -122,10 +125,10 @@
 
   <!-- Main Body -->
   <div class="main">
-    <h1>President's College Astronomical Society</h1>
+    <h1>Seek the Unknown</h1>
     <button id="register-btn">Register Now</button>
     <div class="form-container" id="form-container">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdXIHYjN7jCrov0Hrjo5vVDmnGBAwsylflwi8cCq57mi3qToA/viewform?embedded=true"></iframe>
+      <iframe src="https://docs.google.com/forms/d/e/{YourFormID}/viewform?embedded=true"></iframe>
     </div>
   </div>
 
@@ -143,4 +146,4 @@
   </script>
 
 </body>
-  </html>
+      </html>
