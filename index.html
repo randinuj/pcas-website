@@ -12,6 +12,7 @@
             padding: 0;
             background-color: white;
             color: #333;
+            overflow-x: hidden;
         }
 
         /* Header Styles */
@@ -38,12 +39,26 @@
         .main-content {
             padding-top: 140px;
             text-align: center;
+            margin: 20px;
+            min-height: 80vh;
+        }
+
+        .content-group {
+            opacity: 0;
+            animation: fadeIn 0.7s forwards 0.2s;
         }
 
         .quote {
             font-size: 1.5rem;
             font-weight: bold;
             color: #6d6d6d;
+        }
+
+        .author {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #6d6d6d;
+            margin-top: 10px;
         }
 
         .description {
@@ -54,14 +69,16 @@
 
         .btn-register {
             font-family: 'Product Sans', sans-serif;
-            margin-top: 20px;
+            margin-top: 30px;
             padding: 12px 30px;
+            padding-bottom: 20px;
             font-size: 1.1rem;
             background-color: #002855;
             color: white;
             border-radius: 30px;
             cursor: pointer;
             transition: transform 0.3s ease, background-color 0.3s ease;
+            animation: fadeIn 0.7s;
         }
 
         .btn-register:hover {
@@ -73,26 +90,62 @@
             outline: none;
         }
 
-        /* Image Container */
-        .photo-frame {
+        /* Form Container */
+        .form-container {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        iframe {
             width: 100%;
-            height: calc(60vh - 30px); /* Responsive height minus gap */
-            margin: 0 auto;
-            overflow: hidden;
+            height: 520px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #002855;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .footer-text {
+            font-size: 1rem;
+        }
+
+        .social-links, .contact-info {
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        .social-links i, .contact-info a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links i:hover, .contact-info a:hover {
+            color: #ffd700;
+        }
+
+        .contact-info a {
             display: block;
+            margin-top: 5px;
         }
 
-        .photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Dynamically crop the image */
-        }
-
-        /* Remove gap completely for all viewports */
-        .main-content,
-        .photo-frame {
-            margin-bottom: 0;
-            padding-bottom: 0;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         /* Responsive Styles */
@@ -101,22 +154,53 @@
                 font-size: 1.2rem;
             }
 
+            .author {
+                font-size: 1rem;
+            }
+
             .description {
                 font-size: 1rem;
             }
 
             .btn-register {
                 font-size: 1rem;
-                padding: 10px 20px;
+                padding: 10px 25px;
             }
 
+            iframe {
+                height: 450px;
+            }
+
+            .social-links, .contact-info {
+                font-size: 1rem;
+            }
+        }
+
+        /* Responsive Photo Frame */
+        .photo-frame {
+            width: 100%; /* Full width */
+            height: 50vh; /* Half the viewport height */
+            margin: 30px auto; /* 30px margin between button and image */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s ease-out; /* Slower transition */
+        }
+
+        @media (max-width: 768px) {
             .photo-frame {
-                height: 50vh; /* Smaller height for mobile */
+                height: 40vh; /* Smaller height on mobile */
             }
         }
     </style>
 </head>
 <body>
+
     <!-- Header -->
     <header>
         <img src="about me ..png" alt="PCAS Logo">
@@ -124,9 +208,17 @@
 
     <!-- Main Content -->
     <div class="main-content">
-        <div class="quote">"Somewhere, something incredible is waiting to be known."</div>
-        <div class="description">Membership registration has started. Join us to seek the unknown mysteries of the universe!</div>
-        <button class="btn-register" onclick="showForm()">Register Now</button>
+        <div class="content-group">
+            <div class="quote">"Somewhere, something incredible is waiting to be known."</div>
+            <div class="author">– Carl Sagan</div>
+            <div class="description">Membership registration has started. Join us to seek the unknown mysteries of the universe!</div>
+            <button class="btn-register" onclick="showForm()">Register Now</button>
+        </div>
+
+        <!-- Form Container -->
+        <div class="form-container" id="formContainer">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdXIHYjN7jCrov0Hrjo5vVDmnGBAwsylflwi8cCq57mi3qToA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
     </div>
 
     <!-- Photo Frame -->
@@ -134,10 +226,24 @@
         <img src="./IMG-20241104-WA0148.jpg" alt="Astronomical Society">
     </div>
 
+    <!-- Footer -->
+    <footer>
+        <div class="footer-text">© President's College Astronomical Society</div>
+        <div class="social-links">
+            <a href="https://wa.me/yourphonenumber" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://facebook.com/yourpage" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+        <div class="contact-info">
+            <a href="tel:+94767708978">President: +94 767 708 978</a>
+            <a href="tel:+94777788888">Secretary: +94 777 888 888</a>
+        </div>
+    </footer>
+
     <script>
         function showForm() {
-            alert('Form would be shown here!');
+            document.querySelector('.content-group').style.display = 'none';
+            document.getElementById('formContainer').style.display = 'block';
         }
     </script>
 </body>
-</html>
+            </html>
