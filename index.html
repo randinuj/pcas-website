@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PCAS</title>
   <link href="https://fonts.googleapis.com/css2?family=Product+Sans&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="PCAS.png">
+  <link rel="preload" as="image" href="about-me.png">
   <style>
     body {
       font-family: 'Product Sans', sans-serif;
@@ -169,6 +171,37 @@
         height: 40vh;
       }
     }
+    /* Loading Animation Styles */
+.loading-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #002855;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+      }
   </style>
 </head>
 <body>
@@ -185,7 +218,7 @@
     <div class="quote">"Somewhere, something incredible is waiting to be known."</div>
     <div class="author">– Carl Sagan</div>
     <div class="description">Membership registration has started. Join us to seek the unknown mysteries of the universe!</div>
-    <button class="btn-register" onclick="window.location.href='form.html'">Register Now</button>
+    <button class="btn-register" onclick="window.location.href='form.html';showLoadingAndRedirect()">Register Now</button>
   </div>
 
   <!-- Photo Frame -->
@@ -251,6 +284,20 @@
       .to(".author", { y: 0, opacity: 1, duration: 1, ease: "power2.out" }, "-=0.8")
       .to(".description", { y: 0, opacity: 1, duration: 1, ease: "power2.out" }, "-=0.8")
       .to(".btn-register", { y: 0, opacity: 1, duration: 1, ease: "power2.out" }, "-=0.8");
+    function showLoadingAndRedirect() {
+  // Show the loading overlay
+  const overlay = document.getElementById('loadingOverlay');
+  overlay.style.display = 'flex';
+
+  // Simulate a delay before redirecting
+  setTimeout(() => {
+    window.location.href = "registration_form.html"; // Change this to your form page URL
+  }, 2000); // 2-second delay
+    }
   </script>
+  <!-- Loading Animation -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+</div>
 </body>
   </html>
