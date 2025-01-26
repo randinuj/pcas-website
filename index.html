@@ -83,19 +83,6 @@
       transform: scale(0.95);
     }
 
-    .form-container {
-      display: none;
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    iframe {
-      width: 100%;
-      height: 520px;
-      border: none;
-      border-radius: 10px;
-    }
-
     .photo-frame {
       position: relative;
       overflow: hidden;
@@ -143,12 +130,7 @@
     <div class="quote">"Somewhere, something incredible is waiting to be known."</div>
     <div class="author">– Carl Sagan</div>
     <div class="description">Membership registration has started. Join us to seek the unknown mysteries of the universe!</div>
-    <button class="btn-register" onclick="showForm()">Register Now</button>
-  </div>
-
-  <!-- Form Container -->
-  <div class="form-container" id="formContainer">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdXIHYjN7jCrov0Hrjo5vVDmnGBAwsylflwi8cCq57mi3qToA/viewform?embedded=true" frameborder="0">Loading…</iframe>
+    <a href="form.html" class="btn-register" target="_blank">Register Now</a>
   </div>
 
   <!-- Photo Frame -->
@@ -192,12 +174,6 @@
       .to(".author", { y: 0, opacity: 1, duration: 1, ease: "power2.out" }, "-=0.8")
       .to(".description", { y: 0, opacity: 1, duration: 1, ease: "power2.out" }, "-=0.8")
       .to(".btn-register", { y: 0, opacity: 1, duration: 1, ease: "power2.out" }, "-=0.8");
-
-    // Register Button Click Animation
-    function showForm() {
-      document.querySelector('.main-content > div').style.display = 'none';
-      document.getElementById('formContainer').style.display = 'block';
-    }
   </script>
 </body>
-    </html>
+  </html>
