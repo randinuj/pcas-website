@@ -105,14 +105,20 @@
 
     // Listen for form submission
     formIframe.onload = () => {
-      const iframeSrc = formIframe.contentWindow.location.href;
+      // We need to check the content of the iframe and the confirmation page URL
+      try {
+        const iframeDoc = formIframe.contentDocument || formIframe.contentWindow.document;
+        const iframeSrc = formIframe.contentWindow.location.href;
 
-      // Check if the iframe redirects to the submission confirmation page
-      if (iframeSrc.includes("alreadyresponded")) {
-        whatsappLink.style.display = "block"; // Show the WhatsApp group link
+        // If iframe is redirected to confirmation page after form submission
+        if (iframeSrc.includes("alreadyresponded") || iframeDoc.body.innerHTML.includes("Thank you")) {
+          whatsappLink.style.display = "block"; // Show the WhatsApp group link
+        }
+      } catch (error) {
+        console.error("Error accessing iframe content:", error);
       }
     };
   </script>
 
 </body>
-      </html>
+</html>
