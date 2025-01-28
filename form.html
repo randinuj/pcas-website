@@ -47,31 +47,11 @@
       margin-top: 140px; /* To offset the fixed header */
     }
 
-    #show-link {
-      text-align: center;
-      margin: 20px auto 0;
-    }
-
-    #show-link button {
-      background-color: #25d366;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    #show-link button:hover {
-      background-color: #1ebe5b;
-    }
-
     #whatsapp-link {
       text-align: center;
       font-size: 1rem;
       padding: 20px 0;
-      margin: 10px auto 40px;
-      bottom-paddding:30px;
+      margin: 20px auto 30px; /* Added 30px gap from the footer */
       display: none; /* Initially hidden */
     }
 
@@ -108,18 +88,11 @@
   <!-- Form Content -->
   <iframe id="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSdXIHYjN7jCrov0Hrjo5vVDmnGBAwsylflwi8cCq57mi3qToA/viewform?embedded=true" frameborder="0">Loading…</iframe>
 
-  <!-- Button to Show WhatsApp Link -->
-  <div id="show-link">
-    <p>After submitting the form, click below to join the WhatsApp group.</p>
-    <button id="show-whatsapp-button" onclick="showWhatsAppLink()">Join WhatsApp Group</button>
-  </div>
-
   <!-- WhatsApp Link -->
   <div id="whatsapp-link">
     <div><strong>WhatsApp Group:</strong></div>
     <a href="https://chat.whatsapp.com/BrUjN1gYxz9GIXgdVFkrfQ" target="_blank">https://chat.whatsapp.com/BrUjN1gYxz9GIXgdVFkrfQ</a>
   </div>
-  <br><br>
 
   <!-- Footer -->
   <footer>
@@ -129,27 +102,21 @@
   <script>
     const formIframe = document.getElementById("google-form");
     const whatsappLink = document.getElementById("whatsapp-link");
-    const showLinkButton = document.getElementById("show-whatsapp-button");
 
-    // Function to show the WhatsApp group link
-    function showWhatsAppLink() {
-      whatsappLink.style.display = "block"; // Show the link
-      document.getElementById("show-link").style.display = "none"; // Hide the button
-    }
-
-    // Add an event listener for iframe load event
+    // Check for the form submission URL
     formIframe.onload = () => {
       try {
-        // Simulate showing the WhatsApp link after a form submission
-        formIframe.contentWindow.addEventListener('unload', () => {
-          whatsappLink.style.display = "block";
-          document.getElementById("show-link").style.display = "none";
-        });
+        const iframeSrc = formIframe.contentWindow.location.href;
+
+        // Google Forms redirect users to a specific confirmation page
+        if (iframeSrc.includes("formResponse")) {
+          whatsappLink.style.display = "block"; // Show the WhatsApp group link
+        }
       } catch (error) {
-        console.error("Unable to access iframe content:", error);
+        console.error("Error accessing iframe content:", error);
       }
     };
   </script>
 
 </body>
-  </html>
+</html>
