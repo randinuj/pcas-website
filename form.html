@@ -57,6 +57,25 @@
       margin-top: 140px; /* To offset the fixed header */
     }
 
+    #show-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #show-link button {
+      background-color: #25d366;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #show-link button:hover {
+      background-color: #1ebe5b;
+    }
+
     #whatsapp-link {
       text-align: center;
       font-size: 1rem;
@@ -88,6 +107,12 @@
   <!-- Form Content -->
   <iframe id="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLSdXIHYjN7jCrov0Hrjo5vVDmnGBAwsylflwi8cCq57mi3qToA/viewform?embedded=true" frameborder="0">Loading…</iframe>
 
+  <!-- Button to Show WhatsApp Link -->
+  <div id="show-link">
+    <p>After submitting the form, click below to join the WhatsApp group.</p>
+    <button onclick="showWhatsAppLink()">Join WhatsApp Group</button>
+  </div>
+
   <!-- WhatsApp Link -->
   <div id="whatsapp-link">
     <div><strong>WhatsApp Group:</strong></div>
@@ -100,24 +125,12 @@
   </footer>
 
   <script>
-    const formIframe = document.getElementById("google-form");
-    const whatsappLink = document.getElementById("whatsapp-link");
-
-    // Listen for form submission
-    formIframe.onload = () => {
-      // We need to check the content of the iframe and the confirmation page URL
-      try {
-        const iframeDoc = formIframe.contentDocument || formIframe.contentWindow.document;
-        const iframeSrc = formIframe.contentWindow.location.href;
-
-        // If iframe is redirected to confirmation page after form submission
-        if (iframeSrc.includes("alreadyresponded") || iframeDoc.body.innerHTML.includes("Thank you")) {
-          whatsappLink.style.display = "block"; // Show the WhatsApp group link
-        }
-      } catch (error) {
-        console.error("Error accessing iframe content:", error);
-      }
-    };
+    // Function to display the WhatsApp group link
+    function showWhatsAppLink() {
+      const whatsappLink = document.getElementById("whatsapp-link");
+      whatsappLink.style.display = "block"; // Show the link
+      document.getElementById("show-link").style.display = "none"; // Hide the button
+    }
   </script>
 
 </body>
